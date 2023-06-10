@@ -1,0 +1,20 @@
+{
+  "name": "ToDoList",
+  "version": "1.0.0",
+  "description": "Express ToDoList on Render",
+  "main": "app.js",
+  "author": "Ayush",
+  "license": "MIT",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mongoose": "^7.2.3"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
