@@ -105,6 +105,31 @@ app.post("/", function(req, res){
     }
 });
 
+app.post("/List", function(req, res){
+    let customListName = req.body.newList;
+    List.find().then((foundLists) => {
+        let flag = false;
+        let foundListCopy;
+        foundLists.forEach((foundList) => {
+            if(foundList.name === customListName){
+                flag = true;
+                foundListCopy = foundList;
+            }
+        });
+        if(!flag){
+            let list = new List({
+                name: customListName,
+                items: defaultItems
+            });
+            list.save();
+            res.redirect("/"+customListName);
+        }
+        else{
+                res.render("list", {listTitle: foundListCopy.name, newListItems: foundListCopy.items});
+        }
+    });
+});
+
 app.post("/delete", async function(req, res){
     let checkedItemId = req.body.checkbox;
     let listName = req.body.listName;
